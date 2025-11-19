@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Client - Personas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="loginSection" class="login-container">
+        <div class="card">
+            <h1>Login</h1>
+            <div id="loginMessage"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Email" value="admin@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Password" value="password" required>
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="mainSection" class="hidden">
+        <div class="container">
+            <h1>CRUD Personas - GraphQL</h1>
+
+            <div class="card">
+                <div id="message"></div>
+                <div class="token-info" id="tokenInfo"></div>
+                <button onclick="logout()" class="btn-danger">Cerrar Sesión</button>
+            </div>
+
+            <div class="card">
+                <h2>Crear Persona</h2>
+                <form id="createForm">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input type="text" id="nombres" placeholder="Nombres" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellidos</label>
+                            <input type="text" id="apellidos" placeholder="Apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CI</label>
+                            <input type="text" id="ci" placeholder="CI" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="text" id="telefono" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" id="direccion" placeholder="Dirección">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <button type="submit">Crear</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Lista de Personas</h2>
+                <button onclick="cargarPersonas()">Actualizar</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>CI</th>
+                            <th>Teléfono</th>
+                            <th>Email</th>
+                            <th>Dirección</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="personasBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Editar Persona</h2>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label>Nombres</label>
+                    <input type="text" id="editNombres" placeholder="Nombres" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <input type="text" id="editApellidos" placeholder="Apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label>CI</label>
+                    <input type="text" id="editCi" placeholder="CI" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" id="editTelefono" placeholder="Teléfono">
+                </div>
+                <div class="form-group">
+                    <label>Dirección</label>
+                    <input type="text" id="editDireccion" placeholder="Dirección">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="editEmail" placeholder="Email">
+                </div>
+                <button type="submit">Guardar</button>
+                <button type="button" onclick="cerrarModal()" class="btn-danger">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
